@@ -1,7 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect } from "react";
+const { MovieDb } = require("moviedb-promise");
 
 function App() {
+  const mdb = new MovieDb("4d51e2149ffec1e3fabb84a54d724b76");
+
+  useEffect(() => {
+    mdb
+      .discoverMovie({
+        page: 1,
+        include_video: false,
+        include_adult: false,
+        sort_by: "popularity.desc",
+        language: "en-US",
+      })
+      .then((response) => {
+        console.log(response.results);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  });
+
   return (
     <div className="App">
       <header className="App-header">
