@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getAuth } from "firebase/auth";
 import Card from "../Components/Cards";
 import getMovies from "../Utilities/getMovies";
 const { MovieDb } = require("moviedb-promise");
@@ -9,7 +10,12 @@ function Home() {
   const [typed, setTyped] = useState("");
   const mdb = new MovieDb("4d51e2149ffec1e3fabb84a54d724b76");
 
+  const auth = getAuth();
+  const user = auth.currentUser;
+
   useEffect(() => {
+    console.log(user);
+
     mdb
       .discoverMovie({
         page: 1,
@@ -28,7 +34,7 @@ function Home() {
         return Error(error);
       });
     //setMovies(getMovies())
-  });
+  }, []);
 
   const find = (value) => {
     value.preventDefault();

@@ -9,7 +9,6 @@ function ProtectedRoute({ children }) {
   const auth = getAuth();
 
   const user = auth.currentUser;
-  console.log(user);
 
   if (!user) {
     return <Navigate to="/login" />;

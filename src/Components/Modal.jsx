@@ -22,12 +22,17 @@ function Modal() {
     event.preventDefault();
     setLists((old) => [...old, { Name: name, Movies: [] }]);
     setName("");
-    //const data = db.collection("users").where("uid", "===", user.uid);
-    //console.log(data);
+    const data = db
+      .collection("users")
+      .where("uid", "==", user.uid)
+      .get()
+      .then((data) => {
+        console.log(data);
+      });
 
-    getDoc(doc(db, "users", user.uid)).then((data) => {
-      console.log(data);
-    });
+    // getDoc(doc(db, "users"), { uid: user.uid }).then((data) => {
+    //   console.log(data);
+    // });
   };
 
   return (
@@ -55,7 +60,7 @@ function Modal() {
               lists.map((item) => (
                 <React.Fragment>
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="checkbox"
                     name="option"
                     value="something"
@@ -68,7 +73,7 @@ function Modal() {
               ))}
             <form onSubmit={(e) => addNewList(e)} style={{ display: "flex" }}>
               <input
-                class="form-control"
+                className="form-control"
                 type="text"
                 value={name}
                 placeholder="Add New List"
@@ -77,7 +82,7 @@ function Modal() {
               />
               <button type="submit">
                 <i
-                  class="bi bi-plus-circle-fill"
+                  className="bi bi-plus-circle-fill"
                   style={{ fontSize: "2rem", marginLeft: "2rem" }}
                 ></i>
               </button>

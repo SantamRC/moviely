@@ -30,7 +30,7 @@ function Authentication() {
           name: user.displayName,
           authProvider: "google",
           email: user.email,
-          lists: [],
+          lists: ["This is new List"],
         }).then((response) => {
           console.log(response);
         });
