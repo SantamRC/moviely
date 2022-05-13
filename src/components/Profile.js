@@ -11,7 +11,7 @@ function WatchList({ currentUser, watchList, removeMovie }) {
   const history = useHistory();
 
   useEffect(() => {
-    document.title = 'WatchList | Cineflix'
+    document.title = 'WatchList'
   }, [])
 
   return (

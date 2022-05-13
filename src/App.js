@@ -7,7 +7,6 @@ import Home from "./components/Home";
 import SearchResult from "./components/SearchResult";
 import Profile from "./components/Profile";
 import MovieInfo from "./components/MovieInfo";
-import Footer from "./components/Footer";
 import { signIn, fetchMovies } from "./actions/index";
 import { auth, createUserProfileDocument } from "./firebase/firebaseUtils";
 
@@ -55,8 +54,6 @@ function App(props) {
             <Profile />
           </Route>
         </Switch>
-
-        <Footer />
       </div>
     </div>
   );

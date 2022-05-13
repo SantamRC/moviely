@@ -10,7 +10,7 @@ function Header(props) {
     <AppBar className={`nav ${!props.show ? "hide" : ""}`} color="secondary">
       <Toolbar className="nav__container">
         <Link style={{ textDecoration: "none", color: "unset" }} to="/">
-          <h2 className="logo">CineFlix</h2>
+          <h2 className="logo">Moviely</h2>
         </Link>
 
         {props.currentUser ? (
