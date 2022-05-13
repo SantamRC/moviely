@@ -1,24 +1,25 @@
 import React from "react";
 import app from "./firebase.config";
-import {
-  Routes,
-  Route,
-  Link,
-  useNavigate,
-  useLocation,
-  Navigate,
-  Outlet,
-} from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Home from "../Pages/Home";
 import LoginScreen from "../Pages/LoginScreen";
+import ProtectedRoute from "./protectedRoute";
 
 function Router() {
   return (
-    <div>
+    <BrowserRouter>
       <Routes>
-        <Route></Route>
+        <Route path="/login" element={<LoginScreen />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
-    </div>
+    </BrowserRouter>
   );
 }
 

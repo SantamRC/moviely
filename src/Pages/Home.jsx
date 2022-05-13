@@ -1,4 +1,3 @@
-import { validateNamespace } from "@firebase/util";
 import { useEffect, useState } from "react";
 
 import Card from "../Components/Cards";
