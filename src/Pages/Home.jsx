@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import Card from "../Components/Cards";
 import getMovies from "../Utilities/getMovies";
 const { MovieDb } = require("moviedb-promise");
@@ -40,7 +39,6 @@ function Home() {
 
   return (
     <div>
-     
       <form onSubmit={(e) => find(e)} className="d-flex">
         <input
           className="form-control me-2 ms-2 mt-2"

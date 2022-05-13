@@ -1,20 +1,39 @@
 import React, { useState } from "react";
+import {
+  doc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+  getDoc,
+  getFirestore,
+} from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import app from "../Utilities/firebase.config";
 
 function Modal() {
   const [lists, setLists] = useState([]);
   const [name, setName] = useState("");
 
+  const db = getFirestore(app);
+  const auth = getAuth();
+  const user = auth.currentUser;
+
   const addNewList = (event) => {
     event.preventDefault();
     setLists((old) => [...old, { Name: name, Movies: [] }]);
     setName("");
+    //const data = db.collection("users").where("uid", "===", user.uid);
+    //console.log(data);
+
+    getDoc(doc(db, "users", user.uid)).then((data) => {
+      console.log(data);
+    });
   };
 
   return (
     <div
       className="modal fade"
       id="exampleModal"
-      tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >

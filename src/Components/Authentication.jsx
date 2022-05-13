@@ -34,6 +34,8 @@ function Authentication() {
         }).then((response) => {
           console.log(response);
         });
+      }else{
+        console.log(doc[0].data());
       }
     });
   };
